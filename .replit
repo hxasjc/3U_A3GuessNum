@@ -1,2 +1,2 @@
 language = "bash"
-run = ""
+run = "javac A3GuessNum.java"

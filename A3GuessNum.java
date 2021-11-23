@@ -9,19 +9,33 @@ import java.util.*;
 public A3GuessNum{
   
   
+  public static void playGame(int minRange, int maxRange) {
+    Scanner scan = new Scanner (System.in);
+    Random rand = new Random();
+
+    int randNum = rand.nextInt(maxRange - minRange) + minRange;
+    System.out.println(randNum);
+    int guess = -1;
+
+    while (guess != randNum) {
+      System.out.println("Guess a number between " + minRange + " and " + maxRange);
+      String str = scan.nextLine();
+      if (Integer.parseInt(str) != null) {
+        guess = Integer.parseInt(str);
+
+        if (guess > minRange && guess < maxRange) {
+          System.out.println("is a number");
+        } else {
+          System.out.println("Not in the range of " + minRange + " and " + maxRange);
+        }
+      } else {
+        System.out.println("Not a number")
+      }
+    }
+  }
+  
   //main method
   public static void main(String[] arg){
-    // Make a scanner and Random Object.
-    Scanner input = new Scanner(System.in);
-    Random numGenerator = new Random();
-    
-    // Generate a random number from 0-5.
-    int answer = numGenerator.nextInt(6);
-    int guess = -1; // default guess num.
-    
-    System.out.println("Guess a number");
-    int guess = input.nextInt();  
-    
-      
+    playGame(1, 100);
   }// close main
 }
