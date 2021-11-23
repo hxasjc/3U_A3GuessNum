@@ -1,7 +1,7 @@
 /*
-*Name:
-*Date:
-*Desription:
+*Name: Karl
+*Date: 2021-11-23
+*Desription: Make a guess the number game. The computer generates a random number between 1 and 100 and gives the player up to 5 chances to guess it to win.
 */
 
 import java.util.*;
