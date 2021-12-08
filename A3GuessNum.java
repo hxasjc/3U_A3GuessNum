@@ -15,12 +15,12 @@ public class A3GuessNum {
     Random rand = new Random();
 
     int randNum = rand.nextInt(maxRange - minRange) + minRange;
-    System.out.println(randNum);
+    System.out.println("Answer for testing purposes: " + randNum);
     int guess = -1;
     int incorrectGuesses = 0;
 
     while (guess != randNum && incorrectGuesses < attempts) {
-      System.out.println("Guess a number between " + minRange + " and " + maxRange);
+      System.out.println("\nGuess a number between " + minRange + " and " + maxRange);
       String str = scan.nextLine();
       
       if (str.length() > 0) {
@@ -31,12 +31,19 @@ public class A3GuessNum {
           if (guess >= minRange && guess <= maxRange) {
             if (guess == randNum) {
               System.out.println("Congrats! You won!");
-            } else if (guess < randNum) {
-              System.out.println("Higher");
-              incorrectGuesses++;
             } else {
-              System.out.println("Lower");
+              int difference = Math.abs(randNum - guess);
               incorrectGuesses++;
+
+              if (difference > 50) {
+                System.out.println("Freezing");
+              } else if (difference > 25) {
+                System.out.println("Cold");
+              } else if (difference > 10) {
+                System.out.println("Warm");
+              } else {
+                System.out.println("Hot");
+              }
             }
           } else {
             System.out.println("Error: Not in the range of " + minRange + " and " + maxRange);
@@ -64,25 +71,27 @@ public class A3GuessNum {
 
   // main method
   public static void main(String[] arg) {
-    boolean continuePlaying = false;
+    boolean continuePlaying = true;
     scan = new Scanner(System.in);
     attempts = 5;
 
     while (continuePlaying == true) {
       playGame(1, 100);
 
-      /*System.out.println("Would you like to continue playing? Enter either 'y' or 'n'");
+      System.out.println("Would you like to continue playing? Enter 'y' to continue playing");
       String str = scan.nextLine();
+      if (!str.equals("")) {
       char choice = str.toLowerCase().charAt(0);
-      //char choice = scan.nextLine().toLowerCase().charAt(0);
 
       if (choice == 'y') {
         continuePlaying = true;
       } else {
         continuePlaying = false;
-      }*/
+      }
+    } else {
+      continuePlaying = false;
+    }
     }
     //scan.close();
-    playGame(100, 1000);
   }// close main
 }
